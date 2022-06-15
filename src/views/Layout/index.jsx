@@ -7,7 +7,7 @@ export const LayoutView = () => {
     <div>
       <Header />
 
-      <main className="mt-24">
+      <main className="mt-14">
         <Outlet />
       </main>
 

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { API_URL } from "../../utils/constants";
 
 // -- Images
-import img from "../../assets/living-room.jpg";
+import livingImgUrl from "../../assets/living-room.jpg"
+import buildingImgUrl from "../../assets/building.jpg"
 import imgUser from "../../assets/user.png"
 
 const testimonialDummyData = [
@@ -57,40 +58,38 @@ const HomeView = () => {
   }, []);
 
   return (
-    <div className="text-2xl font-semibold w-full min-h-screen">
+    <div className="text-2xl font-semibold w-full">
       {/* Home liquidation */}
       <section>
-        <h2 className="text-3xl text-center text-gray-600 my-8">
+        <h2 className="text-3xl text-center text-gray-600 py-6">
           Current Liquidations
         </h2>
 
         <div className="grid grid-cols-11 min-h-screen">
-          <div className="col-span-4 bg-red-500">
+          <div className="col-span-4 bg-cover bg-right" style={{backgroundImage: `url(${buildingImgUrl})`}}>
             <div className="px-8 py-12">
               <h3 className="text-6xl text-gray-200 mb-8">90% OFF</h3>
               <p className="text-xl text-gray-200">Check out our current liquidations taking place throughout the country for up to 90% savings on available products. Hurry! Once these items sell out they are gone for good.</p>
             </div>
           </div>
           <div className="col-span-7 flex flex-wrap justify-around">
-            {productsList.map((product) => (
-              <CardComponent productData={product} />
+            {productsList.map((product, index) => (
+              <CardComponent key={index} productData={product} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials section */}
-      <section className="relative">
-        <img src={img} alt="tetimonials" className=" w-full object-cover" />
-
-        <div className="absolute inset-0 w-full h-full">
-          <h2 className="text-3xl text-gray-200 text-center my-8">
+      <section className="w-full bg-cover bg-center" style={{backgroundImage: `url(${livingImgUrl})`}}>
+        <div className="max-w-6xl mx-auto py-10">
+          <p className="text-3xl text-gray-200 text-center">
             Testimonials
-          </h2>
+          </p>
 
-          <div className="flex w-3/4 h-96 mx-auto">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
             {testimonialDummyData.map((testimonial, index) => (
-              <TestimonialComponent testimonialData={testimonial} />
+              <TestimonialComponent key={index} testimonialData={testimonial} />
             ))}
           </div>
         </div>
@@ -102,12 +101,12 @@ const HomeView = () => {
 const TestimonialComponent = ({
   testimonialData: { img, name, title, company, message },
 }) => (
-  <div className="mx-4">
+  <div className="p-2">
     <figure className="w-full h-40 flex justify-center items-center">
       <img className="w-1/3 h-3/4" src={img}/>
     </figure>
     <h4 className="text-center text-gray-200 text-xl mb-2">{name}</h4>
-    <p className="text-center text-gray-400 text-sm mx-8">
+    <p className="text-center text-gray-300 text-sm mx-8">
       {title}, {company}
     </p>
     <hr className="my-6 mx-auto w-20"/>
