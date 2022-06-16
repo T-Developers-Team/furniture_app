@@ -1,5 +1,6 @@
 import { BsGithub, BsFacebook, BsTwitter } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom"
 
 const FooterComponent = () => {
   return (
@@ -7,7 +8,7 @@ const FooterComponent = () => {
       <div className="max-w-6xl mx-auto px-12">
 
         <div className="py-8 max-w-2xl mx-auto flex gap-6">
-          <div className="mx-auto relative w-full border-2 border-orange-700 shadow-lg rounded">
+          <div className="mx-auto relative w-full border-2 border-orange-500 shadow-lg rounded">
             <div className="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
               <FaSearch className="w-4 h-4" color="white"/>
             </div>
@@ -18,7 +19,7 @@ const FooterComponent = () => {
             />
           </div>
 
-          <button className="bg-orange-600 rounded px-8 font-semibold">
+          <button className="bg-orange-500 rounded px-8 font-semibold">
             GO
           </button>
         </div>
@@ -56,7 +57,7 @@ const FooterComponent = () => {
                 Twitter
               </li>
               <li className="cursor-pointer hover:text-orange-500 flex items-center gap-2">
-                <BsGithub color="white"/> GitHub
+                <a href="https://github.com/T-Developers-Team"><BsGithub color="white"/> GitHub</a>
               </li>
             </ul>
           </div>
@@ -77,7 +78,7 @@ const FooterComponent = () => {
             </ul>
           </div>
         </div>
-        <div className="border-t-2 border-orange-700 text-sm italic text-center py-8">2022 T-Developers | Designed & Built</div>
+        <div className="border-t-2 border-orange-500 text-sm italic text-center py-8">2022 T-Developers | Designed & Built</div>
       </div>
     </footer>
   );

@@ -1,5 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import HomeView from "../../views/Home";
+import ProductDetailView from "../../views/ProductDetail";
 import { LayoutView } from "../../views/Layout";
 
 const RoutesComponent = () => {
@@ -12,6 +13,10 @@ const RoutesComponent = () => {
           index: true,
           element: <HomeView />,
         },
+        {
+          path: "/product/:id",
+          element: <ProductDetailView />
+        }
         // {
         //   path: "product/:id",
         //   element: <ProductView />,

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../../utils/constants";
+import {Link} from 'react-router-dom'
 
 // -- Images
 import livingImgUrl from "../../assets/living-room.jpg"
+import diningImgUrl from "../../assets/dining-room.jpg"
 import buildingImgUrl from "../../assets/building.jpg"
 import imgUser from "../../assets/user.png"
+
+import { Card } from "../../components";
 
 const testimonialDummyData = [
   {
@@ -58,7 +62,19 @@ const HomeView = () => {
   }, []);
 
   return (
-    <div className="text-2xl font-semibold w-full">
+    <div className="font-semibold w-full">
+      {/* Banner */}
+      <section className="w-full bg-cover bg-center" style={{backgroundImage: `url(${diningImgUrl})`}}>
+        <div className="py-52 text-center text-white">
+          <p className="text-4xl pb-4">
+            Certified Pre-Owned <br /> Office Furniture
+          </p>
+          <button className="bg-orange-500 rounded px-6 py-1 font-semibold hover:text-orange-600 hover:bg-white">
+            SEE MORE
+          </button>
+        </div>
+      </section>
+
       {/* Home liquidation */}
       <section>
         <h2 className="text-3xl text-center text-gray-600 py-6">
@@ -66,15 +82,17 @@ const HomeView = () => {
         </h2>
 
         <div className="grid grid-cols-11 min-h-screen">
-          <div className="col-span-4 bg-cover bg-right" style={{backgroundImage: `url(${buildingImgUrl})`}}>
+          <div className="col-span-11 lg:col-span-4 bg-cover bg-right" style={{backgroundImage: `url(${buildingImgUrl})`}}>
             <div className="px-8 py-12">
               <h3 className="text-6xl text-gray-200 mb-8">90% OFF</h3>
               <p className="text-xl text-gray-200">Check out our current liquidations taking place throughout the country for up to 90% savings on available products. Hurry! Once these items sell out they are gone for good.</p>
             </div>
           </div>
-          <div className="col-span-7 flex flex-wrap justify-around">
+          <div className="col-span-11 lg:col-span-7 flex flex-wrap justify-around py-6">
             {productsList.map((product, index) => (
-              <CardComponent key={index} productData={product} />
+              <Link key={index} to={`/product/${product._id}`}>
+                <Card productData={product} />
+              </Link>
             ))}
           </div>
         </div>
@@ -102,8 +120,8 @@ const TestimonialComponent = ({
   testimonialData: { img, name, title, company, message },
 }) => (
   <div className="p-2">
-    <figure className="w-full h-40 flex justify-center items-center">
-      <img className="w-1/3 h-3/4" src={img}/>
+    <figure className="w-full flex justify-center items-center">
+      <img className="w-1/4" src={img}/>
     </figure>
     <h4 className="text-center text-gray-200 text-xl mb-2">{name}</h4>
     <p className="text-center text-gray-300 text-sm mx-8">
@@ -111,23 +129,6 @@ const TestimonialComponent = ({
     </p>
     <hr className="my-6 mx-auto w-20"/>
     <p className="text-center text-gray-200 text-sm mx-8">{message}</p>
-  </div>
-);
-
-const CardComponent = ({ productData: { img, title, desc, type, price } }) => (
-  <div className="w-72 rounded overflow-hidden shadow-lg mb-6">
-    <figure className="w-full h-48">
-      <img className="w-full h-full" src={img[0]} alt={`${title}`} />
-    </figure>
-    <div className="flex flex-col px-6 py-4">
-      <div className="text-gray-600 font-bold text-base mb-2 truncate">
-        {title}
-      </div>
-      <p className="h-16 text-gray-500 text-sm mb-2 scrollbar-default overflow-auto">
-        {desc}
-      </p>
-      <p className="text-base font-bold">Price: ${price}</p>
-    </div>
   </div>
 );
 
