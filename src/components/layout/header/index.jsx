@@ -25,7 +25,9 @@ const HeaderComponent = () => {
               <li className="cursor-pointer hover:text-orange-500">
                 Furniture of the Day
               </li>
-              <li className="cursor-pointer hover:text-orange-500">About Us</li>
+              <li className="cursor-pointer hover:text-orange-500">
+                <Link to="/about">About Us</Link>
+              </li>
             </ul>
           </nav>
           <FaSearch className="cursor-pointer hover:text-orange-500" />

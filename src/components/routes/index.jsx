@@ -2,6 +2,7 @@ import { useRoutes } from "react-router-dom";
 import HomeView from "../../views/Home";
 import ProductDetailView from "../../views/ProductDetail";
 import { LayoutView } from "../../views/Layout";
+import AboutUsView from "../../views/AboutUs";
 
 const RoutesComponent = () => {
   let element = useRoutes([
@@ -16,11 +17,11 @@ const RoutesComponent = () => {
         {
           path: "/product/:id",
           element: <ProductDetailView />
-        }
-        // {
-        //   path: "product/:id",
-        //   element: <ProductView />,
-        // },
+        },
+        {
+          path: "/about",
+          element: <AboutUsView />,
+        },
       ],
     },
   ]);
